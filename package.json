@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/server.js",
-    "dev": "nodemon ./src/server.js --ignore __tests__" 
+    "dev": "nodemon ./src/server.js --ignore __tests__"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "mongoose-paginate-v2": "^1.6.3"
   },
   "devDependencies": {
-    "eslint": "^8.16.0"
+    "eslint": "^8.16.0",
+    "nodemon": "^2.0.16"
   }
 }
