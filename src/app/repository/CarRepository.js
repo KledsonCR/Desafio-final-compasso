@@ -1,9 +1,9 @@
-const CarSchema = require('../schema/CarSchema')
+const CarSchema = require('../schema/CarSchema');
 
 class CarRepository {
-    create(payload) {
-        return CarSchema.create(payload)
-    }
+	create(payload) {
+		return CarSchema.create(payload);
+	}
 }
 
-module.exports = new CarRepository()
+module.exports = new CarRepository();

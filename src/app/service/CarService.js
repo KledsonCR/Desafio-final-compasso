@@ -1,10 +1,10 @@
-const CarRepository = require('../repository/CarRepository')
+const CarRepository = require('../repository/CarRepository');
 
 class CarService {
-    create(payload) {
-        const result = CarRepository.create(payload)
-        return result
-    }
+	create(payload) {
+		const result = CarRepository.create(payload);
+		return result;
+	}
 }
 
-module.exports = new CarService()
+module.exports = new CarService();
