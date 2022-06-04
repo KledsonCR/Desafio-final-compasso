@@ -10,6 +10,12 @@ class CarService {
 		const result = await CarRepository.find(payload);
 		return result;
 	}
+
+	async findById(id) {
+		const result = await CarRepository.findById(id);
+		return result;
+	}
+	
 }
 	
 

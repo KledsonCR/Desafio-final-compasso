@@ -18,5 +18,14 @@ class CarController {
 			return res.status(400).json(error);
 		}
 	}
+	async findById(req, res) {
+		const { id } = req.params;
+		try {
+			const result = await CarService.findById(id);
+			return res.status(200).json(result);
+		}catch(error){
+			return res.status(400).json(error);
+		}
+	}
 }
 module.exports = new CarController();
