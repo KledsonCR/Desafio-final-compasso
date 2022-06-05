@@ -13,6 +13,13 @@ class UserRepository {
 		return UserSchema.findById(payload);
 	}
 
+	async update(id, payload) {
+		return UserSchema.findByIdAndUpdate(id, payload);
+	}
+
+	async delete(id) {
+		return UserSchema.findByIdAndDelete(id);
+	}	
 }
 
 module.exports = new UserRepository();
