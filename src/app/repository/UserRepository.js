@@ -9,6 +9,10 @@ class UserRepository {
 		return UserSchema.find(payload);
 	}
 
+	async findById(payload) {
+		return UserSchema.findById(payload);
+	}
+
 }
 
 module.exports = new UserRepository();

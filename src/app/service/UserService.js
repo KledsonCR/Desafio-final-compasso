@@ -11,6 +11,10 @@ class UserService {
 		return result;
 	}
 	
+	async findById(id) {
+		const result = await UserRepository.findById(id);
+		return result;
+	}
 }
 
 module.exports = new UserService();
