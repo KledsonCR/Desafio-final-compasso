@@ -1,7 +1,8 @@
 const UserController = require('../app/controllers/UserController');
+const createValidation = require('../app/validation/user/create');
 
 module.exports = (server, routes, prefix = '/api/v1/person') => {
-	routes.post('/', UserController.create);
+	routes.post('/', createValidation, UserController.create);
 	routes.get('/', UserController.findAll);
 	routes.get('/:id', UserController.findById);
 	routes.put('/:id', UserController.update);
