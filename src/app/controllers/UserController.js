@@ -1,4 +1,5 @@
 const UserService = require('../service/UserService');
+const paginate = require('../helper/utils/paginate/UserPaginate');
 
 class UserCrontroller {
 	async create(req, res) {
@@ -15,7 +16,7 @@ class UserCrontroller {
 		const payload = req.params;
 		try {
 			const result = await UserService.findAll(payload);
-			return res.status(201).json(result);
+			return res.status(201).json(paginate(result));
 		}catch(error){
 			return res.status(500).json(error);
 		}
