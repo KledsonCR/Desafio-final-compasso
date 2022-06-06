@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
 						return help.message('Invalid CPF!');
 					}
 					return true;
-				})
+				})//.regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)
 				.required(),
 			birthDay: Joi.date().required(),
 			email: Joi.string().trim().required(),           
