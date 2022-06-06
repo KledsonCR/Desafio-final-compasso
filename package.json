@@ -1,0 +1,35 @@
+{
+  "name": "final-challenge-compass",
+  "version": "1.0.0",
+  "description": "api de aluguel de carros",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js --ignore __tests__"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KledsonCR/Desafio-final-compasso.git"
+  },
+  "author": "kledson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KledsonCR/Desafio-final-compasso/issues"
+  },
+  "homepage": "https://github.com/KledsonCR/Desafio-final-compasso#readme",
+  "dependencies": {
+    "@joi/date": "^2.1.0",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.5",
+    "mongoose-paginate-v2": "^1.6.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "nodemon": "^2.0.16"
+  }
+}
