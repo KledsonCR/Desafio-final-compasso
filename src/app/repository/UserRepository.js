@@ -6,29 +6,19 @@ class UserRepository {
 	}
   
 	async findAll(payload) {
-		const myCustomLabels = {
-			totalDocs: 'total',
-			docs: 'User',
-			page: 'offset',
-			nextPage: false,
-			prevPage: false,
-			totalPages: 'offsets',
-			pagingCounter: false,
-			meta: false,
-			hasPrevPage: false,
-			hasNextPage: false,
-         
-		};
-		const options = {
-			page: 1,
-			limit: 50,
-			customLabels: myCustomLabels,
-		};
-		return UserSchema.paginate(payload, options, {});
+		const { page = 1, limit = 50, ...query } = payload;
+		return UserSchema.paginate(
+			{ ...query },
+			{
+				limit: Number(limit),
+				page: Number(page),
+				skip: (Number(page) - 1) * Number(limit)
+			}
+		);
 	}
 
-	async findById(payload) {
-		return UserSchema.findById(payload);
+	async findById(id) {
+		return UserSchema.findById(id);
 	}
 
 	async update(id, payload) {
