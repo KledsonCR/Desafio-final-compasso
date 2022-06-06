@@ -1,4 +1,6 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const CarSchema = new mongoose.Schema({
 	model: {
@@ -26,15 +28,18 @@ const CarSchema = new mongoose.Schema({
 			description: {
 				type: String,
 				required: true
-			} 
-		}
-	],
+			}, 
+			_id: false
+	   
+		}],
 	passengersQtd: {
 		type: Number,
 		min: 1,
 		required: true,
 	}
 });
+
+CarSchema.plugin(mongoosePaginate);
 
 const Car = mongoose.model('Car', CarSchema);
 module.exports = Car;

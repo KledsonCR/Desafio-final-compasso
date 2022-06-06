@@ -6,7 +6,25 @@ class CarRepository {
 	}
 
 	async find(payload) {
-		return CarSchema.find(payload);
+		const myCustomLabels = {
+			totalDocs: 'total',
+			docs: 'Car',
+			page: 'offset',
+			nextPage: false,
+			prevPage: false,
+			totalPages: 'offsets',
+			pagingCounter: false,
+			meta: false,
+			hasPrevPage: false,
+			hasNextPage: false,
+         
+		};
+		const options = {
+			page: 1,
+			limit: 50,
+			CustomLabels: myCustomLabels,
+		};
+		return CarSchema.paginate(payload, options, {});
 	}
 
 	async findById(payload) {
@@ -19,7 +37,8 @@ class CarRepository {
 
 	async delete(id) {
 		return CarSchema.findByIdAndDelete(id);
-	}	
+	}
+	
 }
 
 module.exports = new CarRepository();
