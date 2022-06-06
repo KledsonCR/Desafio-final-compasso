@@ -22,7 +22,7 @@ class UserRepository {
 		const options = {
 			page: 1,
 			limit: 50,
-			CustomLabels: myCustomLabels,
+			customLabels: myCustomLabels,
 		};
 		return UserSchema.paginate(payload, options, {});
 	}
