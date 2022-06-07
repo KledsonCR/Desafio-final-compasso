@@ -5,7 +5,8 @@ module.exports = async (req, res, next) => {
 	try {
 		const schema = Joi.object({
 			name: Joi.string().required(),
-			cpf: Joi.string().min(11).max(11)
+			cpf: Joi.string()/*.pattern(/^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/)*/
+				.min(11).max(11)
 				.custom((value, help) => {
 					if (!validateCpf(value)) {
 						return help.message('Invalid CPF!');

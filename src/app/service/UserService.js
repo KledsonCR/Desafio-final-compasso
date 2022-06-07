@@ -1,9 +1,11 @@
 const UserRepository = require('../repository/UserRepository');
+const cpfFormat = require('../helper/functions/CpfFomat');
 
 class UserService {
 	async create(payload) {
 		const result = await UserRepository.create(payload);
-		return result;
+		const users = cpfFormat(result);
+		return users;
 	}
 
 	async findAll(payload) {
