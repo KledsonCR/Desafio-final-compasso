@@ -1,5 +1,4 @@
 const Joi = require('joi').extend(require('@joi/date'));
-const CarYear = require('../../helper/functions/CarYear');
 
 module.exports = async (req, res, next) => {
 	try {
@@ -8,13 +7,7 @@ module.exports = async (req, res, next) => {
 			type: Joi.string().trim().required(),
 			brand: Joi.string().trim().required(),
 			color: Joi.string().trim().required(),           
-			year: Joi.number().min(1950).max(2022)
-				.custom((value, help) => {
-					if (CarYear(value)) {
-						return help.message('invalid year!');
-					}
-					return true;
-				}).required(),
+			year: Joi.number().min(1950).max(2022),
 			accessories: Joi.array()
 				.unique()
 				.min(1)
