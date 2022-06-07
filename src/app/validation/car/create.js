@@ -25,9 +25,19 @@ module.exports = async (req, res, next) => {
 		});
 
 		const { error } = await schema.validate(req.body, { abortEarl: true });
-		if (error) throw  error;    
+		if (error) {
+			throw {
+				message: 'Bad Request',
+				details: [
+					{
+						message: error.message,
+					},
+				],
+			};
+		}
+
 		return next();
 	} catch (error) {
-		return res.status(400).json(error.message);
+		return res.status(400).json(error);
 	}
 };
