@@ -1,30 +1,42 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const validateCpf = require('../../helper/functions/CpfValid');
 
+const birthDay = new Date(Date.now() - 1000 * 60 * 60 * 24 * 365 * 18);
+
 module.exports = async (req, res, next) => {
 	try {
 		const schema = Joi.object({
-			name: Joi.string().required(),
-			cpf: Joi.string()/*.pattern(/^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})|([0-9]{11}))$/)*/
-				.min(11).max(11)
+			name: Joi.string().min(3).required(),
+			cpf: Joi.string()
+				.min(11).max(14)
 				.custom((value, help) => {
 					if (!validateCpf(value)) {
 						return help.message('Invalid CPF!');
 					}
 					return true;
-				})//.regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)
+				})
 				.required(),
-			birthDay: Joi.date().required(),
+			birthDay: Joi.date().format().max(birthDay).required(),
 			email: Joi.string().trim().required(),           
-			password: Joi.string().min(6).max(2022),
+			password: Joi.string().min(6),
 			canDrive: Joi.string().required().valid('yes', 'no').required(),
 
 		});
 
 		const { error } = await schema.validate(req.body, { abortEarl: true });
-		if (error) throw  error;    
+		if (error) {
+			throw {
+				message: 'Bad Request',
+				details: [
+					{
+						message: error.message,
+					},
+				],
+			};
+		}
+
 		return next();
 	} catch (error) {
-		return res.status(400).json(error.message);
+		return res.status(400).json(error);
 	}
 };
