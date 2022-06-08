@@ -26,9 +26,11 @@ $ npm run dev
 # A aplicação iniciará na porta: 3000
 ```
 
-### Rotas de Carros 🏎
+## Rotas de Carros 🏎
 
 POST(Cadastrar um carro) - `http://localhost:3000/api/v1/car`
+
+> Exemplo
 
 ```bash
   {
@@ -163,7 +165,7 @@ GET(Listar por ID) - `http://localhost:3000/api/v1/car/:id` <br>
     "__v": 0
 }
 ```
-PUT(Atualizar um carros) - `http://localhost:3000/api/v1/car/:id`
+PUT(Atualizar carros) - `http://localhost:3000/api/v1/car/:id`
 
 ```bash
 {
@@ -195,9 +197,14 @@ PUT(Atualizar um carros) - `http://localhost:3000/api/v1/car/:id`
 ```
 DELETE(Deletar um carro) - `http://localhost:3000/api/v1/car/:id`
 
-### Rotas de Pessoas 🤵🏾
+> Deletar um carro por ID
+
+
+## Rotas de Pessoas 🤵🏾
 
 POST(Casdastrar um usuário) - `http://localhost:3000/api/v1/person`
+
+> Exemplo
 
 ```bash
 {
@@ -259,6 +266,25 @@ PUT(Atualizar usuário)- `http://localhost:3000/api/v1/person/:id`
     }
 ```
 DELETE(Apagar usuário) - `http://localhost:3000/api/v1/person/:id`
+
+> Deletar usuário po ID
+
+
+
+
+## Rota de Autenticação 🔐
+
+POST(Autenticar usuário) - `http://localhost:3000/api/v1/authenticate`
+
+> Exemplo
+
+```bash
+{
+    "email": "joazinho@gmail.com",
+    "password": "123456"
+}
+```
+
 
 
 # Autor 👨‍💻 
