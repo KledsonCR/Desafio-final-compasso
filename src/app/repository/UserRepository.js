@@ -28,6 +28,10 @@ class UserRepository {
 	async delete(id) {
 		return UserSchema.findByIdAndDelete(id);
 	}	
+
+	async authenticate(email) {
+		return UserSchema.findOne({ email }).select('+password');
+	}	
 }
 
 module.exports = new UserRepository();
