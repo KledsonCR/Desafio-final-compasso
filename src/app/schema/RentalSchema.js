@@ -13,40 +13,46 @@ const RentalSchema = new mongoose.Schema({
 	activities: {
 		type: String,
 		required: true,
-	}});
-	/*address: [
+	},
+	address: [
 		{
 			zipCode: {
 				type: String,
-				required: true
+				required: true,
 			},
-            number: {
+			street: {
 				type: String,
-				required: true
+				required: false,
 			}, 
-            complement: {
+			complement: {
 				type: String,
-				required: true
+				required: false,
 			}, 
-            isFilial: {
+			district: {
 				type: String,
-				required: true
+				required: false
 			}, 
-            : {
+			number: {
+				type: Number,
+				required: true,
+			}, 
+			city: {
 				type: String,
-				required: true
+				required: false,
 			}, 
-            : {
+			state: {
 				type: String,
-				required: true
-			}, 
-            : {
-				type: String,
-				required: true
-			}, 
+				required: false,
+			},
+			isFilial: {
+				type: Boolean,
+				required: true,
+				default: false
+			},
+			_id: false
 		}
-    ],	
-});*/
+	],	
+});
 
 
 const Rental = mongoose.model('Rental', RentalSchema);
