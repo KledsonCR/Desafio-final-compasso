@@ -8,6 +8,10 @@ class RentalRepository {
 	async findAll(payload) {
 		return RentalSchema.find(payload);
 	}
+
+	async findById(id) {
+		return RentalSchema.findById(id);
+	}
 }
 
 module.exports = new RentalRepository();
