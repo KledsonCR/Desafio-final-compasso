@@ -12,6 +12,15 @@ class RentalRepository {
 	async findById(id) {
 		return RentalSchema.findById(id);
 	}
+
+	async update(id, payload) {
+		return RentalSchema.findByIdAndUpdate(id, payload);
+	}
+
+	async delete(id) {
+		return RentalSchema.findByIdAndDelete(id);
+	}
+	
 }
 
 module.exports = new RentalRepository();

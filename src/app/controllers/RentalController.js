@@ -29,6 +29,27 @@ class RentalController {
 			return res.status(500).json(error);
 		}
 	}
+
+	async update(req, res) {
+		const { id } = req.params;
+		const  payload   = req.body;
+		try {
+			const result = await RentalService.update(id, payload);
+			return res.status(200).json(result);
+		}catch(error){
+			return res.status(500).json(error);
+		}
+	}
+
+	async delete(req, res) {
+		const { id } = req.params;
+		try {
+			const result = await RentalService.delete(id);
+			return res.status(200).json(result);
+		}catch(error){
+			return res.status(500).json(error);
+		}
+	}
 }
 
 
