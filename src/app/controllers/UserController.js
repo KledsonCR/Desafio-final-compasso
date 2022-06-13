@@ -16,7 +16,7 @@ class UserCrontroller {
 		const payload = req.params;
 		try {
 			const result = await UserService.findAll(payload);
-			return res.status(201).json(paginate(result));
+			return res.status(200).json(paginate(result));
 		}catch(error){
 			return res.status(500).json(error);
 		}
