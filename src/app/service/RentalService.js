@@ -2,13 +2,13 @@ const RentalRepository = require('../repository/RentalRepository');
 const ViaCep = require('../helper/utils/Api/ViaCep');
 
 class RentalService {
-	async create(payload, data) {
+	async create(payload) {
 		let i = 0;
 		do {
 			const Zipcode = payload.address;
 			const address = Zipcode[i];
-			const data = await ViaCep.findCep(address.zipCode);
-			const { cep, logradouro, complemento, bairro, localidade, uf } = data;
+			const result = await ViaCep.findCep(address.zipCode);
+			const { cep, logradouro, complemento, bairro, localidade, uf } = result;
 			address.zipCode = cep;
 			address.street = logradouro;
 			address.complement = complemento;
@@ -17,7 +17,7 @@ class RentalService {
 			address.state = uf;
 			i += 1;
 		} while ( i < payload.address.length);	  
-		const result = await RentalRepository.create(payload, data);
+		const result = await RentalRepository.create(payload);
 		return result;
 	}		
 
