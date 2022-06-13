@@ -6,7 +6,15 @@ class RentalRepository {
 	}
 
 	async findAll(payload) {
-		return RentalSchema.find(payload);
+		const { page = 1, limit = 50, ...query } = payload;
+		return RentalSchema.paginate(
+			{ ...query },
+			{
+				limit: Number(limit),
+				page: Number(page),
+				skip: (Number(page) - 1) * Number(limit)
+			}
+		);
 	}
 
 	async findById(id) {
