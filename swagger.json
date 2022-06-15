@@ -1,0 +1,120 @@
+{
+"openapi": "3.0.1",
+"info": {
+    "title": "Renpass.UOL Api 🚩",
+    "description": "Rent your luxury and semi luxury car 🚗",
+    "version": "1.0.0",
+    "contact": {
+        "name": "kledson Costa",
+        "email": "kledsoncrabelo@icloud.com"
+    }
+},
+"servers": [
+    {
+      "url": "http://localhost:3000/api/v1",
+      "description": "local server"
+    }
+  ],
+  "tags": [
+    {
+        "name": "Cars",
+        "description": "Car Routes"
+    },
+    {
+        "name": "Person",
+        "description": "Person Routes"
+    },
+    {
+        "name": "Authentication",
+        "description": "Person Authentication"
+    },
+    {
+        "name": "Rental",
+        "description": "Rentals Routes"
+    }
+  ],
+  "paths": {
+    "/car": {
+        "post": {
+            "summary": "Register a car",
+            "description": "car registration",
+            "tags": ["Cars"],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/Car"
+                        },
+                        "examples": {
+                            "car": {
+                                "value": {
+                                    "model": "Ferrari do Diego",
+                                    "type": "Sport",
+                                    "brand": "Ferrari",
+                                    "color": "Vermelha",
+                                    "year": 2020,
+                                    "accessories": [
+                                        { "description": "Aerofólio" },
+                                        { "description": "Motor turbo" },
+                                        { "description": "Volante esportivo" },
+                                        { "description": "Pneus de corrida" },
+                                        { "description": "Gás Nitro" }
+                                    ],
+                                    "passengersQtd": 2
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Car"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Car": {
+                "type": "object",
+                "properties": {
+                    "model": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "color": {
+                        "type": "string"
+                    },
+                    "year": {
+                        "type": "number"
+                    },
+                    "accessories": [
+                        {
+                            "description": {
+                                "type": "string"
+                            }                         
+                        }
+                    ],
+                    "passengersQtd": {
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    }
+}

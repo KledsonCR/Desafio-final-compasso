@@ -1,21 +1,20 @@
-const UserService = require('../service/UserService');
-const paginate = require('../helper/utils/paginate/UserPaginate');
+const RentalService = require('../service/RentalService');
+const paginate = require('../helper/utils/paginate/RentalPaginate');
 
-class UserCrontroller {
+class RentalController {
 	async create(req, res) {
 		const payload = req.body;
 		try {
-			const result = await UserService.create(payload);
+			const result = await RentalService.create(payload);
 			return res.status(201).json(result);
 		}catch(error){
-			return res.status(500).json(error);
+			return res.status(500).json(error);		
 		}
 	}
-
 	async findAll(req, res) {
-		const payload = req.params;
+		const payload = req.query;
 		try {
-			const result = await UserService.findAll(payload);
+			const result = await RentalService.findAll(payload);
 			return res.status(200).json(paginate(result));
 		}catch(error){
 			return res.status(500).json(error);
@@ -25,10 +24,10 @@ class UserCrontroller {
 	async findById(req, res) {
 		const { id } = req.params;
 		try {
-			const result = await UserService.findById(id);
+			const result = await RentalService.findById(id);
 			return res.status(200).json(result);
 		}catch(error){
-			return res.status(400).json(error);
+			return res.status(500).json(error);
 		}
 	}
 
@@ -36,22 +35,23 @@ class UserCrontroller {
 		const { id } = req.params;
 		const  payload   = req.body;
 		try {
-			const result = await UserService.update(id, payload);
+			const result = await RentalService.update(id, payload);
 			return res.status(200).json(result);
 		}catch(error){
-			return res.status(400).json(error);
+			return res.status(500).json(error);
 		}
 	}
 
 	async delete(req, res) {
 		const { id } = req.params;
 		try {
-			const result = await UserService.delete(id);
+			const result = await RentalService.delete(id);
 			return res.status(200).json(result);
 		}catch(error){
-			return res.status(400).json(error);
+			return res.status(500).json(error);
 		}
 	}
 }
 
-module.exports = new UserCrontroller();
+
+module.exports = new RentalController();

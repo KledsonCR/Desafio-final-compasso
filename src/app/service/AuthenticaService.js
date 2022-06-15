@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const authConfig = require('../../config/config.json');
 
 
-class AutheService {
+class AuthenticaService {
 	async authenticate(email, password) {
 		const user = await UserRepository.authenticate(email);
   
@@ -12,9 +12,9 @@ class AutheService {
   
 		const { canDrive } = user;
   
-		const checkPassword = await bcrypt.compare(password, user.password);
+		const validPassword = await bcrypt.compare(password, user.password);
   
-		if (!checkPassword) throw Error('Invalid password.');
+		if ( !validPassword) throw Error('Invalid password.');
   
 		user.password = undefined;
   
@@ -26,4 +26,4 @@ class AutheService {
 	}
 }
   
-module.exports = new AutheService();
+module.exports = new AuthenticaService();
