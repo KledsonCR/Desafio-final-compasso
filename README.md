@@ -1,6 +1,6 @@
 <h1 align='center'> Renpass.UOL Final Challenge 🚘🚩 </h1>
 
-> Developing ⚠️
+> Developing ⏳
 
 ### Tecnologias Utilizadas no Desenvolvimento 🛠
 
@@ -10,8 +10,8 @@
 - Mongoose
 - Javascript
 - Postman
-  
-###  ▶️ Rodando a aplicação 
+
+### ▶️ Rodando a aplicação
 
 ```bash
 # Clone o projeto executando o comando
@@ -49,7 +49,9 @@ POST(Cadastrar um carro) - `http://localhost:3000/api/v1/car`
     "passengersQtd": 2
 }
 ```
+
 GET(Listar todos os carros) - `http://localhost:3000/api/v1/car` <br>
+
 ```bash
 {
     "vehicles": [
@@ -134,6 +136,7 @@ GET(Listar todos os carros) - `http://localhost:3000/api/v1/car` <br>
     "offsets": 1
 }
 ```
+
 GET(Listar por ID) - `http://localhost:3000/api/v1/car/:id` <br>
 
 ```bash
@@ -165,6 +168,7 @@ GET(Listar por ID) - `http://localhost:3000/api/v1/car/:id` <br>
     "__v": 0
 }
 ```
+
 PUT(Atualizar carros) - `http://localhost:3000/api/v1/car/:id`
 
 ```bash
@@ -195,10 +199,18 @@ PUT(Atualizar carros) - `http://localhost:3000/api/v1/car/:id`
     "__v": 0
 }
 ```
+
 DELETE(Deletar um carro) - `http://localhost:3000/api/v1/car/:id`
 
 > Deletar um carro por ID
 
+PATCH(Atualizar acessorio de um carro) - `http://localhost:3000/api/v1/car/:id/accessories/:id`
+
+```bash
+{
+	"description": "Rodão com raios 20"
+}
+```
 
 ## Rotas de Pessoas 🤵🏾
 
@@ -216,6 +228,7 @@ POST(Casdastrar um usuário) - `http://localhost:3000/api/v1/person`
     "canDrive": "yes"
 }
 ```
+
 GET(Listar todos os usuários) - `http://localhost:3000/api/v1/person`
 
 ```bash
@@ -265,12 +278,10 @@ PUT(Atualizar usuário)- `http://localhost:3000/api/v1/person/:id`
     "canDrive": "yes"
     }
 ```
+
 DELETE(Apagar usuário) - `http://localhost:3000/api/v1/person/:id`
 
 > Deletar usuário po ID
-
-
-
 
 ## Rota de Autenticação 🔐
 
@@ -285,14 +296,70 @@ POST(Autenticar usuário) - `http://localhost:3000/api/v1/authenticate`
 }
 ```
 
+## Rotas de Locadoras 🔑🚙
+
+POST(Cadastramento de uma locadora) - `http://localhost:3000/api/v1/rental`
+
+> Exemplo
+
+```bash
+{
+        "name": "Localiza Rent a Car",
+        "cnpj": "16.670.085/0001-55",
+        "activities": "Aluguel de Carros E Gestão de Frotas",
+        "address": [
+{
+        "zipCode": "96200200",
+        "number": 1234,
+        "isFilial": false
+        },
+    ]
+}
+```
+
+GET(Listar todas as locadoras) - `http://localhost:3000/api/v1/rental`
+
+```bash
+{
+	"rentals": [
+		{
+			"_id": "62a7581708a96671013176ba",
+			"name": "Unidas Rent a Car",
+			"cnpj": "16.670.085/0001-95",
+			"activities": "Aluguel de Carros E Gestão de Frotas",
+			"address": [
+				{
+					"zipCode": "01001-000",
+					"street": "Praça da Sé",
+					"complement": "lado ímpar",
+					"district": "Sé",
+					"number": 205,
+					"city": "São Paulo",
+					"state": "SP",
+					"isFilial": false
+				}
+			]
+		}
+	],
+	"limit": 50,
+	"total": 1,
+	"offset": 1,
+	"offsets": 1
+}
+```
+> Exemplos: 
+
+GET(Lista locadora por ID) - `http://localhost:3000/api/v1/rental/:id`
+<br>
+
+PUT(Atualizar locadora por ID) - `http://localhost:3000/api/v1/rental/:id`
+<br>
+
+DELETE(Apagar uma locadora por ID) - `http://localhost:3000/api/v1/rental/:id`
 
 
-# Autor 👨‍💻 
-
-
+# Autor 👨‍💻
 
 [Kledson Costa](https://www.linkedin.com/in/kledson-rabelo-028b5a232/)
 
 
-
-###
