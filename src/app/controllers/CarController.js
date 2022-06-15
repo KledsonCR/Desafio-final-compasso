@@ -50,6 +50,17 @@ class CarController {
 			return res.status(400).json(error);
 		}
 	}
+
+	async updateAccessories(req, res) {
+		const { id, descriptionId } = req.params;
+		const  payload   = req.body;
+		try {
+			const result = await CarService.updateAccessories(id, descriptionId, payload);
+			return res.status(200).json(result);
+		}catch(error){
+			return res.status(400).json(error);
+		}
+	}
 }
 
 module.exports = new CarController();

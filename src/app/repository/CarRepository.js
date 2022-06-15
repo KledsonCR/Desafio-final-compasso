@@ -12,7 +12,7 @@ class CarRepository {
 			{
 				limit: Number(limit),
 				page: Number(page),
-				skip: (Number(page) - 1) * Number(limit)
+				skip: (Number(page) - 1) * Number(limit),
 			}
 		);
 	}
@@ -28,7 +28,24 @@ class CarRepository {
 	async delete(id) {
 		return CarSchema.findByIdAndDelete(id);
 	}
-	
+
+	async updateAccessories(id, descriptionId, payload) {
+		return CarSchema.findByIdAndUpdate(
+			id,
+			{
+				$set: {
+					'accessories.$[outer].description': payload.description,
+				},
+			},
+			{
+				arrayFilters: [
+					{
+						'outer._id': descriptionId,
+					},
+				],
+			}
+		);
+	}
 }
 
 module.exports = new CarRepository();
