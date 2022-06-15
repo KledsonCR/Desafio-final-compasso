@@ -1,0 +1,36 @@
+{
+"openapi": "3.0.1",
+"info": {
+    "title": "Renpass.UOL Api 🚩",
+    "description": "Rent your luxury and semi luxury car 🚗",
+    "version": "1.0.0",
+    "contact": {
+        "name": "kledson Costa",
+        "email": "kledsoncrabelo@icloud.com"
+    }
+},
+"servers": [
+    {
+      "url": "http://localhost:3000/api/v1",
+      "description": "local server"
+    }
+  ],
+  "tags": [
+    {
+        "name": "Car",
+        "description": "Car Routes"
+    },
+    {
+        "name": "Person",
+        "description": "Person Routes"
+    },
+    {
+        "name": "Authentication",
+        "description": "Person Authentication"
+    },
+    {
+        "name": "Rental",
+        "description": "Rentals Routes"
+    }
+  ]
+}
