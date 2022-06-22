@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const authConfig = require('../../config/config.json');
 
 
-class AuthenticaService {
+class AuthenticateService {
 	async authenticate(email, password) {
 		const user = await UserRepository.authenticate(email);
   
@@ -26,4 +26,4 @@ class AuthenticaService {
 	}
 }
   
-module.exports = new AuthenticaService();
+module.exports = new AuthenticateService();
