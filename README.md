@@ -362,4 +362,3 @@ DELETE(Apagar uma locadora por ID) - `http://localhost:3000/api/v1/rental/:id`
 
 [Kledson Costa](https://www.linkedin.com/in/kledson-rabelo-028b5a232/)
 
-
