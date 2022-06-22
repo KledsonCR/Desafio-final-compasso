@@ -5,14 +5,13 @@ class CarRepository {
 		return CarSchema.create(payload, result);
 	}
 
-	async find(payload) {
+	async findAll(payload) {
 		const { page = 1, limit = 50, ...query } = payload;
 		return CarSchema.paginate(
 			{ ...query },
 			{
 				limit: Number(limit),
-				page: Number(page),
-				skip: (Number(page) - 1) * Number(limit),
+				page: Number(page)
 			}
 		);
 	}
