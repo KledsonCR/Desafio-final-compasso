@@ -6,16 +6,15 @@ const birthDay = new Date(Date.now() - 1000 * 60 * 60 * 24 * 365 * 18);
 module.exports = async (req, res, next) => {
 	try {
 		const schema = Joi.object({
-			name: Joi.string().min(3).trim().required(),
+			name: Joi.string().min(3).trim(),
 			cpf: Joi.string().regex(cpfRegex())
 				.message(
 					'Cpf with invalid format, use only xxx.xxx.xxx-xx format!'
-				)
-				.required(),			
-			birthDay: Joi.date().format().max(birthDay).required(),
-			email: Joi.string().trim().email().required(),           
-			password: Joi.string().min(6).required(),
-			canDrive: Joi.string().valid('yes', 'no').required(),
+				),			
+			birthDay: Joi.date().format().max(birthDay),
+			email: Joi.string().trim().email(),           
+			password: Joi.string().min(6),
+			canDrive: Joi.string().valid('yes', 'no'),
 		});
 
 		const { error } = await schema.validate(req.body, { abortEarly: false });

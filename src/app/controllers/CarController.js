@@ -12,9 +12,10 @@ class CarController {
 		}
 	}
 
-	async find(req, res) {
+	async findAll(req, res) {
+		const payload = req.query;
 		try {
-			const result = await CarService.find(req.query);
+			const result = await CarService.findAll(payload);
 			return res.status(200).json(paginate(result));
 		}catch(error){
 			return res.status(400).json(error);
@@ -45,7 +46,7 @@ class CarController {
 		const { id } = req.params;
 		try {
 			const result = await CarService.delete(id);
-			return res.status(200).json(result);
+			return res.status(204).json(result);
 		}catch(error){
 			return res.status(400).json(error);
 		}

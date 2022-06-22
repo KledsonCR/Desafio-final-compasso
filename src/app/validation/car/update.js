@@ -3,21 +3,19 @@ const Joi = require('joi').extend(require('@joi/date'));
 module.exports = async (req, res, next) => {
 	try {
 		const schema = Joi.object({
-			model: Joi.string().trim().required(),
-			type: Joi.string().trim().required(),
-			brand: Joi.string().trim().required(),
-			color: Joi.string().trim().required(),           
-			year: Joi.number().min(1950).max(2022).required(), 
+			model: Joi.string().trim(),
+			type: Joi.string().trim(),
+			brand: Joi.string().trim(),
+			color: Joi.string().trim(),           
+			year: Joi.number().min(1950).max(2022), 
 			accessories: Joi.array()
 				.unique()
 				.min(1)
-				.items({ description: Joi.string().trim().required() })
-				.min(1)
-				.required(),
+				.items({ description: Joi.string().trim()})
+				.min(1),
 			passengersQtd: Joi.number().integer()
 				.min(1)
-				.max(5)
-				.required()
+				.max(5)				
 		});
 
 		const { error } = await schema.validate(req.body, { abortEarly: false });
@@ -33,3 +31,4 @@ module.exports = async (req, res, next) => {
 		});
 	}
 };
+
