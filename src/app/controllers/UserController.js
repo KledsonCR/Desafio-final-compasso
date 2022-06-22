@@ -13,12 +13,12 @@ class UserCrontroller {
 	}
 
 	async findAll(req, res) {
-		const payload = req.params;
+		const payload = req.query;
 		try {
 			const result = await UserService.findAll(payload);
 			return res.status(200).json(paginate(result));
 		}catch(error){
-			return res.status(500).json(error);
+			return res.status(400).json(error);
 		}
 	}
 
@@ -47,7 +47,7 @@ class UserCrontroller {
 		const { id } = req.params;
 		try {
 			const result = await UserService.delete(id);
-			return res.status(200).json(result);
+			return res.status(204).json(result);
 		}catch(error){
 			return res.status(400).json(error);
 		}
