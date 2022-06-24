@@ -1,24 +1,14 @@
-const Joi = require('joi').extend(require('@joi/date'));
+const Joi = require('joi');
 
 module.exports = async (req, res, next) => {
 	try {
 		const schema = Joi.object({
-			model: Joi.string().trim(),
-			type: Joi.string().trim(),
-			brand: Joi.string().trim(),
-			color: Joi.string().trim(),           
-			year: Joi.number().min(1950).max(2022), 
-			accessories: Joi.array()
-				.unique()
-				.min(1)
-				.items({ description: Joi.string().trim()})
-				.min(1),
-			passengersQtd: Joi.number().integer()
-				.min(1)
-				.max(5)				
+			id: Joi.string().trim()
+				.min(24)
+				.max(24)				
 		});
 
-		const { error } = await schema.validate(req.body, { abortEarly: false });
+		const { error } = await schema.validate(req.params, { abortEarly: false });
 		if (error) throw error;
 
 		return next();
