@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
 			canDrive: Joi.string().valid('yes', 'no'),
 		});
 
-		const { error } = await schema.validate(req.body, { abortEarly: false });
+		const { error } = await schema.validate(req.query, { abortEarly: false });
 		if (error) throw error;
 
 		return next();
