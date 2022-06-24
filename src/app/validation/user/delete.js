@@ -1,23 +1,14 @@
-const Joi = require('joi').extend(require('@joi/date'));
-const { cpfRegex } = require('../../helper/utils/Regex');
-
-const birthDay = new Date(Date.now() - 1000 * 60 * 60 * 24 * 365 * 18);
+const Joi = require('joi');
 
 module.exports = async (req, res, next) => {
 	try {
 		const schema = Joi.object({
-			name: Joi.string().min(3).trim(),
-			cpf: Joi.string().regex(cpfRegex())
-				.message(
-					'Cpf with invalid format, use only xxx.xxx.xxx-xx format!'
-				),			
-			birthDay: Joi.date().format().max(birthDay),
-			email: Joi.string().trim().email(),           
-			password: Joi.string().min(6),
-			canDrive: Joi.string().valid('yes', 'no'),
+			id: Joi.string().trim()
+				.min(24)
+				.max(24)				
 		});
 
-		const { error } = await schema.validate(req.body, { abortEarly: false });
+		const { error } = await schema.validate(req.params, { abortEarly: false });
 		if (error) throw error;
 
 		return next();
