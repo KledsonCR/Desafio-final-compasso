@@ -3,7 +3,7 @@ class NotFound extends Error {
     super();
     this.statusCode = 404;
     this.description = 'Not found';
-    this.message = `${payload}not found`;
+    this.message = `${payload} not found`;
   }
 }
 
