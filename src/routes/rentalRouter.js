@@ -1,8 +1,7 @@
 const RentalController = require('../app/controllers/RentalController');
-// const createValidation = require('../app/validation/rental/create');
 
 module.exports = (server, routes, prefix = '/api/v1/rental') => {
-  routes.post('/', /* createValidation, */ RentalController.create);
+  routes.post('/', RentalController.create);
   routes.get('/', RentalController.findAll);
   routes.get('/:id', RentalController.findById);
   routes.put('/:id', RentalController.update);
