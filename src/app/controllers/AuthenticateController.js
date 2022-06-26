@@ -5,9 +5,9 @@ class AuthenticateController {
     try {
       const { email, password } = req.body;
       const result = await AuthenticateService.authenticate(email, password);
-      return res.status(201).json(result);
+      return res.status(200).json(result);
     } catch (error) {
-      return res.status(400).json(error.message);
+      return res.status(401).json(error.message);
     }
   }
 }
