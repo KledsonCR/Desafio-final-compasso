@@ -7,6 +7,7 @@ class RentalService {
     do {
       const Zipcode = payload.address;
       const address = Zipcode[i];
+      // eslint-disable-next-line no-await-in-loop
       const result = await ViaCep.findCep(address.zipCode);
       const { cep, logradouro, complemento, bairro, localidade, uf } = result;
       address.zipCode = cep;
