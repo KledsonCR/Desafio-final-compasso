@@ -1,6 +1,8 @@
 const Joi = require('joi').extend(require('@joi/date'));
 const { cpfRegex } = require('../../helper/utils/Regex');
 
+const ENUMS = require('../../helper/utils/ENUMS');
+
 const birthDay = new Date(Date.now() - 1000 * 60 * 60 * 24 * 365 * 18);
 
 module.exports = async (req, res, next) => {
@@ -14,7 +16,9 @@ module.exports = async (req, res, next) => {
       birthDay: Joi.date().format().max(birthDay).required(),
       email: Joi.string().trim().email().required(),
       password: Joi.string().min(6).required(),
-      canDrive: Joi.string().valid('yes', 'no').required()
+      canDrive: Joi.string()
+        .valid(...ENUMS.canDrive)
+        .required()
     });
 
     const { error } = await schema.validate(req.body, { abortEarly: false });

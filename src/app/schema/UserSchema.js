@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 const bcrypt = require('bcryptjs');
+const ENUMS = require('../helper/utils/ENUMS');
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -29,12 +30,15 @@ const UserSchema = new mongoose.Schema({
   },
   canDrive: {
     type: String,
-    enum: ['yes', 'no'],
+    enum: {
+      values: ENUMS.canDrive,
+      message: 'Invalid value'
+    },
     required: true
   }
 });
 
-UserSchema.pre('save', async function (next) {
+UserSchema.pre('save', async function password(next) {
   const hash = await bcrypt.hash(this.password, 10);
   this.password = hash;
 
