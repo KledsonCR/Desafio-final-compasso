@@ -1,5 +1,7 @@
 const RentalRepository = require('../repository/RentalRepository');
 const ViaCep = require('../helper/utils/Api/ViaCep');
+const BadRequest = require('../errors/BadRequest');
+const NotFound = require('../errors/NotFound');
 
 class RentalService {
   async create(payload) {
@@ -19,26 +21,31 @@ class RentalService {
       i += 1;
     } while (i < payload.address.length);
     const result = await RentalRepository.create(payload);
+    if (!result) throw new NotFound('Not found');
     return result;
   }
 
   async findAll(payload) {
     const result = await RentalRepository.findAll(payload);
+    if (!result) throw new NotFound('Not found');
     return result;
   }
 
   async findById(id) {
     const result = await RentalRepository.findById(id);
+    if (!result) throw new BadRequest(`Id ${id} It is not valid`);
     return result;
   }
 
   async update(id, payload) {
     const result = await RentalRepository.update(id, payload);
+    if (!result) throw new NotFound(`Id ${id} It is not valid`);
     return result;
   }
 
   async delete(id) {
     const result = await RentalRepository.delete(id);
+    if (!result) throw new NotFound(`Id ${id} It is not valid`);
     return result;
   }
 }
