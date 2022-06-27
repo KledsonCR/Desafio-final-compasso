@@ -16,19 +16,19 @@ class ReserveService {
 
   async findById(id) {
     const result = await ReserveRepository.findById(id);
-    if (!result) throw new NotFound(`Id ${id} It is not valid`);
+    if (!result) throw new NotFound(`Id ${id}`);
     return result;
   }
 
   async update(id, payload) {
     const result = await ReserveRepository.update(id, payload);
-    if (!result) throw new NotFound('Not found');
+    if (!result) throw new NotFound(`Id ${id}`);
     return result;
   }
 
   async delete(id) {
     const result = await ReserveRepository.delete(id);
-    if (!result) throw new NotFound(`Id ${id} It is not valid`);
+    if (!result) throw new NotFound(`Id ${id}`);
     return result;
   }
 }

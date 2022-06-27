@@ -9,7 +9,7 @@ class ReserveCrontroller {
       const result = await ReserveService.create(id, payload);
       return res.status(201).json(result);
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(404).json(error);
     }
   }
 
@@ -29,7 +29,7 @@ class ReserveCrontroller {
       const result = await ReserveService.findById(id);
       return res.status(200).json(result);
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(404).json(error);
     }
   }
 
@@ -40,7 +40,7 @@ class ReserveCrontroller {
       const result = await ReserveService.update(id, payload);
       return res.status(200).json(result);
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(404).json(error);
     }
   }
 
@@ -48,9 +48,9 @@ class ReserveCrontroller {
     const { id } = req.params;
     try {
       const result = await ReserveService.delete(id);
-      return res.status(204).json(result);
+      return res.status(200).json(result);
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(404).json(error);
     }
   }
 }
