@@ -16,13 +16,13 @@ class FleetService {
 
   async findById(id) {
     const result = await FleetRepository.findById(id);
-    if (!result) throw new NotFound(`Id ${id} It is not valid`);
+    if (!result) throw new NotFound(`Id ${id} It is not valid,`);
     return result;
   }
 
   async update(id, payload) {
     const result = await FleetRepository.update(id, payload);
-    if (!result) throw new NotFound('Not found');
+    if (!result) throw new NotFound(`Id ${id} It is not valid,`);
     return result;
   }
 
