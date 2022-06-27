@@ -5,11 +5,11 @@ const getValidation = require('../app/validation/user/get');
 const deleteValidation = require('../app/validation/user/delete');
 
 module.exports = (server, routes, prefix = '/api/v1/person') => {
-	routes.post('/', createValidation, UserController.create);
-	routes.get('/', getValidation, UserController.findAll);
-	routes.get('/:id', UserController.findById);
-	routes.put('/:id', updateValidation, UserController.update);
-	routes.delete('/:id', deleteValidation, UserController.delete);
+  routes.post('/', createValidation, UserController.create);
+  routes.get('/', getValidation, UserController.findAll);
+  routes.get('/:id', UserController.findById);
+  routes.put('/:id', updateValidation, UserController.update);
+  routes.delete('/:id', deleteValidation, UserController.delete);
 
-	server.use(prefix, routes);
+  server.use(prefix, routes);
 };

@@ -1,15 +1,17 @@
 const Joi = require('joi').extend(require('@joi/date'));
+const { status } = require('../../helper/utils/ENUMS');
 
 module.exports = async (req, res, next) => {
   try {
     const schema = Joi.object({
-      model: Joi.string().trim().required(),
-      type: Joi.string().trim().required(),
-      brand: Joi.string().trim().required(),
-      color: Joi.string().trim().required(),
-      year: Joi.number().min(1950).max(2022).required(),
-      accessories: Joi.array().unique().min(1).items({ description: Joi.string().trim().required() }).min(1).required(),
-      passengersQtd: Joi.number().integer().min(1).max(5).required()
+      id_car: Joi.string().trim().required(),
+      id_rental: Joi.string().trim().required(),
+      status: Joi.string()
+        .valid(...Object.values(status))
+        .trim()
+        .required(),
+      daily_value: Joi.number().required(),
+      plate: Joi.string().trim().required()
     });
 
     const { error } = await schema.validate(req.body, { abortEarly: false });
