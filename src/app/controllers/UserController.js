@@ -8,7 +8,7 @@ class UserCrontroller {
       const result = await UserService.create(payload);
       return res.status(201).json(result);
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(404).json(error);
     }
   }
 
@@ -49,7 +49,7 @@ class UserCrontroller {
       const result = await UserService.delete(id);
       return res.status(204).json(result);
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(404).json(error);
     }
   }
 }
