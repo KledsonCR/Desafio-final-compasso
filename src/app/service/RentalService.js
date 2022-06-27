@@ -33,19 +33,19 @@ class RentalService {
 
   async findById(id) {
     const result = await RentalRepository.findById(id);
-    if (!result) throw new BadRequest(`Id ${id} It is not valid`);
+    if (!result) throw new BadRequest(`Id ${id}It is not valid`);
     return result;
   }
 
   async update(id, payload) {
     const result = await RentalRepository.update(id, payload);
-    if (!result) throw new NotFound(`Id ${id} It is not valid`);
+    if (!result) throw new NotFound(`Id ${id}`);
     return result;
   }
 
   async delete(id) {
     const result = await RentalRepository.delete(id);
-    if (!result) throw new NotFound(`Id ${id} It is not valid`);
+    if (!result) throw new NotFound(`Id ${id}`);
     return result;
   }
 }
